@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Bayesian First Aid by rasmusab</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Bayesian First Aid</h1>
+        <p>Replacing the null hypothesis tests in R by Bayesian estimation, one test at a time.</p>
+
+        <p class="view"><a href="https://github.com/rasmusab/bayesian_first_aid">View the Project on GitHub <small>rasmusab/bayesian_first_aid</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/rasmusab/bayesian_first_aid/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/rasmusab/bayesian_first_aid/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/rasmusab/bayesian_first_aid">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>The idea with this R package is to make "replacements" for the most commonly used tests in R such as <code>t.test</code>, <code>binom.test</code> and <code>cor.test</code>. These replacements will be based on Bayesian estimation and will in that sense neither be "null hypothesis" nor "tests". They will be replacements in that they will have similar assumptions as the original tests and will answer the the same type of question as one probably have when using the corresponding null hypothesis test.</p>
+
+<p>The gimmick of the package is that the Bayesian versions have functions calls that are compatible with the classical tests' functions. That is going from a classical binomial test:</p>
+
+<div class="highlight highlight-r"><pre><span class="c">binom.test(x=7, n=10)</span>
+</pre></div>
+
+<pre><code>    Exact binomial test
+
+data:  7 and 10
+number of successes = 7, number of trials = 10, p-value = 0.01855
+alternative hypothesis: true probability of success is not equal to 0.33
+95 percent confidence interval:
+ 0.3475 0.9333
+sample estimates:
+probability of success 
+                   0.7 
+</code></pre>
+
+<p>... to the Bayesian estimation version is as easy as prepending <code>bayes.</code> to the function call:</p>
+
+<div class="highlight highlight-r"><pre><span class="c">bayes.binom.test(x=7, n=10, p=0.33)</span>
+</pre></div>
+
+<pre><code>    Bayesian first aid binomial test
+
+data: 7 and 10
+number of successes = 7, number of trials = 10
+Estimated relative frequency of success:
+  0.669 
+95% credible interval:
+  0.42 0.91 
+The relative frequency of success is more than 0.33 by a probability of 0.993 
+and less than 0.33 by a probability of 0.007 
+</code></pre>
+
+<p>Hence the name of the package: Bayesian First Aid.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/rasmusab">rasmusab</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-15535612-10");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
